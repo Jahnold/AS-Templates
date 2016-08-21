@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<template 
+	format="4"
+	revision="1"
+	name="MVP Screen"
+	description="Creates the files for an MVP Screen">
+ 
+	<category value="Other"/>
+ 
+	<parameter 
+		id="className"
+		name="Screen Name"
+		type="string"
+		constraints="class|unique|nonempty"
+		default=""
+		help="The name of the Screen you are creating"/>
+
+    <parameter
+        id="includeLayout"
+        name="Create layout XML?"
+        type="boolean"
+        default="true"
+        help="Generate a layout XML for the screen" />
+
+	<parameter 
+		id="layoutName"
+		name="Layout Name"
+		type="string"
+		constraints="layout|unique|nonempty"
+		default="screen_"
+		suggest="screen_${classToResource(className)}"
+		help="The name of the layout to create"/>
+
+	<parameter
+        id="rootTag"
+        name="Root Tag"
+        type="string"
+        constraints="nonempty"
+        default="FrameLayout"
+        help="The root XML tag for the new file" />
+ 
+	<globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+ 
+</template>
